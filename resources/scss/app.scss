@@ -15,6 +15,7 @@ $h6-font-size:                $font-size-base !default;
 // Custom.scss
 $dark-purple: #1A202C !default;
 $light-purple: #1f2b43 !default;
+$accent: #ffbf00;
 
 $secondary: $gray-500;
 
@@ -69,11 +70,85 @@ html, body{
     transition: linear ease-in .3s;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
+#app__logo{
+  width: 115px;
+}
+.card-rating{
+  z-index: 3; 
+  right: -1.5rem; 
+  bottom: -1.5rem;
+}
+.poster-container{
+  // width: 180px;
+  // min-height: 239px;
+  padding-bottom: 135%;
+}
+.poster-container-sm{
+  min-height: 117px;
+}
+.text-container{
+  width: fit-content;
+  color: transparent;
+}
+a{
+  text-decoration: none !important;
+}
+#nav-search-input{
+  background-color: transparent;
+  color: #dee2e6;
+}
+
+.wave{
+  animation: wave 1s infinite linear forwards;
+  -webkit-animation: wave 1s infinite linear forwards;
+  background: $gray-600;
+  background: linear-gradient(to right, $gray-600 8%, $gray-500 18%, $gray-600 33%);
+  background-size: 800px 104px;
+}
+.clamp{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.clamp.one-line{
+  -webkit-line-clamp: 1;
+}
+.clamp.two-lines{
+  -webkit-line-clamp: 2;
+}
+.clamp.six-lines{
+  -webkit-line-clamp: 6;
+}
+
+@keyframes wave {
+  0% {
+      background-position: -468px 0
+  }
+  100% {
+      background-position: 468px 0
+  }
+}
+
+@media(min-width: 768px){
+  // .game-card .poster img{
+  //   min-width: 282px;
+  // }
+}
+
 @media(max-width : 520px){
     .col-sm-6{
-        width: 50% !important;
+      flex: 0 0 auto;
+      width: 50%;
+    }
+    .card-rating{
+      right: .1rem;
+      bottom: 0rem;
+    }
+    .game__summary{
+      display: none;
     }
 }
+
 
 $utilities: map-merge(
   $utilities,
@@ -172,6 +247,7 @@ $utilities: map-merge(
             "gray-300": $gray-300,
             "gray-400": $gray-400,
             "gray-500": $gray-500,
+            "gray-600": $gray-600,
             "gray-800": $gray-800,
             "light-purple": $light-purple,
             "dark-purple": $dark-purple,
@@ -200,8 +276,8 @@ $utilities: map-merge(
 @import "../../node_modules/bootstrap/scss/nav";
 @import "../../node_modules/bootstrap/scss/forms";
 @import "../../node_modules/bootstrap/scss/utilities/api";
-
-
+@import "../../node_modules/bootstrap/scss/spinners";
+@import "./custom";
 
 
 

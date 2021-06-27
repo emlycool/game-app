@@ -15,4 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     // .postCss('resources/css/app.css', 'public/css', [
     //     //
     // ])
-    .sass('resources/scss/app.scss', 'public/css');
+    .sass('resources/scss/app.scss', 'public/css')
+    .sass('resources/scss/modal-ytl.scss', 'public/css')
+    .browserSync({proxy:'https://game-app.com'});

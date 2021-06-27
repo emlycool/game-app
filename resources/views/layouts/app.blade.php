@@ -30,7 +30,8 @@
             }
 
         </style>
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="{{secure_asset('css/app.css')}}">
+        @stack('styles')
     </head>
     <body class="bg-dark-purple d-flex flex-column">
         <x-header></x-header>
@@ -42,7 +43,10 @@
         <x-footer></x-footeer>
 
 
-        <script src="/js/app.js"></script>
+        <script src="{{secure_asset('js/app.js')}}"></script>
         {{-- <script src="https://unpkg.com/@popperjs/core@2"></script> --}}
+        <script type="module" src="https://unpkg.com/@github/include-fragment-element@latest?module"></script>
+        @stack('scripts')
+
     </body>
 </html>
