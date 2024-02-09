@@ -3,7 +3,7 @@ FROM php:8.1-fpm
 
 # Install curl and additional dependencies
 RUN apt-get update && \
-    apt-get install -y curl git unzip && \
+    apt-get install -y curl git unzip php php-curl && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
@@ -20,7 +20,8 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php &&
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # Check Composer version
 RUN composer --version
