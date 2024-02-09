@@ -22,7 +22,9 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ENV COMPOSER_VERSION 2.1.5
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION
 
 # Check Composer version
 RUN composer --version
