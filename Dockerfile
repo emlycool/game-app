@@ -2,9 +2,9 @@
 FROM php:8.1-fpm
 
 # Install curl and additional dependencies
-RUN apt-get update && \
-    apt-get install -y curl git unzip php php-curl && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     apt-get install -y curl git unzip php php-curl && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 # RUN apt-get update && \
