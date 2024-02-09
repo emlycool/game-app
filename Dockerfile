@@ -29,4 +29,4 @@ EXPOSE 9000
 # Command to start PHP-FPM when the container runs
 # CMD ["php-fpm", "-D"]
 
-RUN php-fpm -D
+CMD ["php-fpm -D"]
