@@ -1,24 +1,30 @@
-#use the official image for PHP
+# Use the official image for PHP
 FROM php:8.1-fpm
 
-#install php extensions
+# Install curl and additional dependencies
+RUN apt-get update && \
+    apt-get install -y curl git unzip && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
 RUN apt-get update && \
     apt-get install -y libpng-dev && \
     docker-php-ext-install pdo pdo_mysql gd
 
-#install what will install dependencies from the composer.json
-RUN curl -sS https://getcomposer.org/installer | php
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
-#copy contents to working dir -- php is a scripted language and not a compiled language 
+# Copy contents to working directory
 COPY . /var/www/html
 
-#set working directory
+# Set working directory
 WORKDIR /var/www/html
 
+# Install project dependencies using Composer
+RUN composer install
 
-# Expose the port Apache listens on
-EXPOSE 80
+# Expose the port PHP-FPM listens on
+EXPOSE 9000
 
-# command to start Apache when the container runs
-CMD [php-fpm -D ]
+# Command to start PHP-FPM when the container runs
+CMD ["php-fpm", "-D"]
