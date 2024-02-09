@@ -16,8 +16,6 @@ COPY . /var/www/html
 #set working directory
 WORKDIR /var/www/html
 
-#install app dependencies
-RUN composer install
 
 # Expose the port Apache listens on
 EXPOSE 80
