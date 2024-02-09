@@ -7,7 +7,8 @@ RUN apt-get update && \
     docker-php-ext-install pdo pdo_mysql gd
 
 #install what will install dependencies from the composer.json
-RUN apt-get update && apt-get install -y composer
+RUN curl -sS https://getcomposer.org/installer | php
+
 
 #copy contents to working dir -- php is a scripted language and not a compiled language 
 COPY . /var/www/html
