@@ -24,7 +24,7 @@ RUN composer --version
 RUN composer install
 
 # Expose the port PHP-FPM listens on (if needed)
-# EXPOSE 9000
+EXPOSE 9000
 
 # Command to start PHP-FPM when the container runs
 # CMD ["php-fpm", "-D"]
